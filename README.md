@@ -40,13 +40,13 @@ LongPathShutil.enable_long_paths_on_registry()
 import LongPathShutil as shutil
 
 # Copy a file with long paths
-shutil.copy("C:\very\long\source\path\file.txt", "C:\another\very\long\destination\path\file.txt")
+shutil.copy(r"C:\very\long\source\path\file.txt", r"C:\another\very\long\destination\path\file.txt")
 
 # Move a directory with long paths
-shutil.move("C:\very\long\source\directory", "C:\another\very\long\destination\directory")
+shutil.move(r"C:\very\long\source\directory", r"C:\another\very\long\destination\directory")
 
 # Remove a directory tree with long paths
-shutil.rmtree("C:\very\long\path\to\directory")
+shutil.rmtree(r"C:\very\long\path\to\directory")
 ```
 
 ### Full API
