@@ -32,7 +32,7 @@ def test_function_and_signatures():
     if len(source_links2) == 0:
         # somehow this link is sometimes not found, so providing a default
         github_code_link = r"https://raw.githubusercontent.com/python/cpython/refs/heads/3.13/Lib/shutil.py"
-        #raise ConnectionError("Could not find raw source code link on github.")
+        # originally I was throwing this error: raise ConnectionError("Could not find raw source code link on github.")
     else:
         github_code_link = source_links2[0].attrs["href"]
 
