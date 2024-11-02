@@ -52,6 +52,7 @@ jobs:
         pip install
         build
         --user
+
     - name: Build wheel
       run: python -m build
     - name: Store the distribution packages
@@ -135,7 +136,7 @@ jobs:
       - name: Download built package
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: python-package-distributions
           path: dist/
 
       - name: Publish to pypi if new version
