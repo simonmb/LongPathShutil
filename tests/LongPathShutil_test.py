@@ -19,7 +19,7 @@ def test_function_and_signatures():
         raise ConnectionError(
             "Could not find source code link on the official documentation."
         )
-    print(source_links[0].attrs["href"])
+    
     response2 = requests.get(source_links[0].attrs["href"])
     if response2.status_code != 200:
         raise ConnectionError("Could not download needed metadata from the shutil github.")
@@ -29,7 +29,6 @@ def test_function_and_signatures():
         "a", href=lambda href: href and "raw" in href and href.endswith("shutil.py")
     )
 
-    print(source_links2)
     if len(source_links2) == 0:
         raise ConnectionError("Could not find raw source code link on github.")
 
