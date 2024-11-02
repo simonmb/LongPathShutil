@@ -61,9 +61,9 @@ jobs:
     - name: Determine the version for this release from the build
       id: current
       run: |
-        BUILD_VER="$(ls dist/LongPathShutil-*.tar.gz)"
+        BUILD_VER="$(ls dist/longpathshutil-*.tar.gz)"
         echo "Path: $BUILD_VER"
-        if [[ $BUILD_VER =~ (LongPathShutil-)([^,][0-9.]{4}) ]]; then
+        if [[ $BUILD_VER =~ (longpathshutil-)([^,][0-9.]{4}) ]]; then
             echo "version=${BASH_REMATCH[2]}" >> $GITHUB_OUTPUT
             echo "Version of build: ${BASH_REMATCH[2]}"
         else
@@ -73,7 +73,7 @@ jobs:
     - name: Get latest published version
       id: published
       run: |
-        PUB_VER="$(pypi current-version LongPathShutil)"
+        PUB_VER="$(pypi current-version longpathshutil)"
         echo "version=$PUB_VER" >> $GITHUB_OUTPUT
         echo "Latest published version: $PUB_VER"
 
