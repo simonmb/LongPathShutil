@@ -16,7 +16,7 @@
 You can install it like so:
 
 ```bash
-pip install git+https://github.com/simonmb/LongPathShutil
+pip install LongPathShutil
 ```
 
 ## Usage
