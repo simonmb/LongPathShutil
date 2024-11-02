@@ -80,18 +80,18 @@ jobs:
         echo "version=$PUB_VER" >> $GITHUB_OUTPUT
         echo "Latest published version: $PUB_VER"
 
-        - name: Tag repository
-        shell: bash
-        id: get-next-tag
-        if: (steps.current.outputs.version != steps.published.outputs.version)
-        run: |
-          TAG_NAME=${{ steps.current.outputs.version }}
-          echo "tag-name=$TAG_NAME" >> $GITHUB_OUTPUT
-          echo "This release will be tagged as $TAG_NAME"
-          git config user.name "github-actions"
-          git config user.email "actions@users.noreply.github.com"
-          git tag --annotate --message="Automated tagging system" $TAG_NAME ${{ github.sha }}
-  
+    - name: Tag repository
+      shell: bash
+      id: get-next-tag
+      if: (steps.current.outputs.version != steps.published.outputs.version)
+      run: |
+        TAG_NAME=${{ steps.current.outputs.version }}
+        echo "tag-name=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "This release will be tagged as $TAG_NAME"
+        git config user.name "github-actions"
+        git config user.email "actions@users.noreply.github.com"
+        git tag --annotate --message="Automated tagging system" $TAG_NAME ${{ github.sha }}
+        
     - name: Push the tag
       if: (steps.current.outputs.version != steps.published.outputs.version)
       id: push_tag
