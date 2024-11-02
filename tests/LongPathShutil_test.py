@@ -30,9 +30,13 @@ def test_function_and_signatures():
     )
 
     if len(source_links2) == 0:
-        raise ConnectionError("Could not find raw source code link on github.")
+        # somehow this link is sometimes not found, so providing a default
+        github_code_link = r"https://raw.githubusercontent.com/python/cpython/refs/heads/3.13/Lib/shutil.py"
+        #raise ConnectionError("Could not find raw source code link on github.")
+    else:
+        github_code_link = source_links2[0].attrs["href"]
 
-    response3 = requests.get(source_links2[0].attrs["href"])
+    response3 = requests.get(github_code_link)
     if response3.status_code != 200:
         raise ConnectionError("Could not download needed raw code from the shutil github.")
 
